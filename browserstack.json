@@ -1,0 +1,39 @@
+{
+    "auth":{
+       "username":"vastyjay_oXQVpP",
+       "access_key":"v9PANRXjFnMVkVpV62Cx"
+    },
+    "browsers":[
+       {
+          "browser":"chrome",
+          "os":"Windows 10",
+          "versions":["latest"]
+       }
+
+    ],
+    "run_settings":{
+       "cypress_config_file":"./cypress.config.js",
+       "cypress_version": "10",
+       "project_name":"Val Kitchen-Sink",
+       "build_name":"Kitchen Test 1",
+       "spec_timeout": 40,
+       "specs": ["cypress/e2e/1-getting-started/todo.cy.js", "cypress/e2e/2-advanced-examples/actions.cy.js"],
+       "exclude":[         
+       ],
+       "parallels":"2",
+       "npm_dependencies":{
+          
+       },
+       "package_config_options":{
+          
+       },
+       "headless":true
+    },
+    "connection_settings":{
+       "local":true,
+       "local_identifier":null,
+       "local_mode":null,
+       "local_config_file":null
+    },
+    "disable_usage_reporting":false
+ }

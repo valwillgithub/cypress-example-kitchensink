@@ -66,7 +66,8 @@ context('Actions', () => {
 
   it('.click() - click on a DOM element', () => {
     // https://on.cypress.io/click
-    cy.get('.action-btn').click()
+    cy.pause();
+    //cy.get('.action-btn').click()
 
     // You can click on 9 specific positions of an element:
     //  -----------------------------------
@@ -82,6 +83,8 @@ context('Actions', () => {
     //  -----------------------------------
 
     // clicking in the center of the element is the default
+    //cy.pause();
+
     cy.get('#action-canvas').click()
 
     cy.get('#action-canvas').click('topLeft')
