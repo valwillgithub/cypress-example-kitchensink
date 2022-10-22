@@ -13,9 +13,9 @@
     ],
     "run_settings":{
        "cypress_config_file":"./cypress.config.js",
-       "cypress_version": "10",
+       "cypress_version": "10.3.0",
        "project_name":"Val Kitchen-Sink",
-       "build_name":"Kitchen Test 2",
+       "build_name":"Kweku",
        "spec_timeout": 40,
        "exclude":[         
        ],

@@ -1,6 +1,6 @@
-const { defineConfig } = require("cypress");
+//const {defineConfig } = require("cypress");
 
-module.exports = defineConfig({
+module.exports = {
   defaultCommandTimeout: 10000,
   modifyObstructiveCode: true,
   experimentalSourceRewriting: true,
@@ -8,14 +8,11 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   video: true,
   e2e: {
-    async setupNodeEvents(on, config) {
-   
-      return config;
-    },
     experimentalSessionAndOrigin: true,
+    specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
   },
   retries: {
     runMode: 0,
     openMode: 0,
   },
-})
+}
