@@ -15,12 +15,11 @@
        "cypress_config_file":"./cypress.config.js",
        "cypress_version": "10",
        "project_name":"Val Kitchen-Sink",
-       "build_name":"Kitchen Test 1",
+       "build_name":"Kitchen Test 2",
        "spec_timeout": 40,
-       "specs": ["cypress/e2e/1-getting-started/todo.cy.js", "cypress/e2e/2-advanced-examples/actions.cy.js"],
        "exclude":[         
        ],
-       "parallels":"2",
+       "parallels":"1",
        "npm_dependencies":{
           
        },
