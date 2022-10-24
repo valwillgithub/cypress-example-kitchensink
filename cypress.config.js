@@ -1,6 +1,7 @@
 //const {defineConfig } = require("cypress");
 
 module.exports = {
+  projectId: 'sg47ci',
   defaultCommandTimeout: 10000,
   modifyObstructiveCode: true,
   experimentalSourceRewriting: true,

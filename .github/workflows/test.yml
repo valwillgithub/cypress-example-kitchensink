@@ -1,0 +1,69 @@
+name: Cypress parallel tests
+
+on: 
+  push:
+    branches:
+      - local
+  
+jobs:
+  install_job:
+    name: Install NPM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # install a specific version of Node using
+      # https://github.com/actions/setup-node
+      - name: Use Node.js v16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      # just so we learn about available environment variables GitHub provides
+      - name: Print CI env variables
+        run: |
+          npm i -g @bahmutov/print-env@2
+          print-env GITHUB BUILD ACTIONS || true
+
+  cypress_job:
+    name: Cypress job
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.17.1-chrome105-ff104-edge
+    needs: install
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1,2,3] 
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    # because of "record" and "parallel" parameters
+    # these containers will load balance all found tests among themselves
+    - name: Run Cypress E2E Tests
+      uses: cypress-io/github-action@v4
+      with:
+        record: true
+        parallel: true
+        start: npm start
+        wait-on: 'http://localhost:8080'
+        wait-on-timeout: 60
+        install-command: yarn --frozen-lockfile --silent
+        group: 'Actions example'
+        group: E2E on ${{ runner.os }} with Node v${{ matrix.node }}
+      env:
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+      # Save videos and screenshots as test artifacts
+      # https://github.com/actions/upload-artifact
+      - uses: actions/upload-artifact@master
+        # there might be no screenshots created when:
+        # - there are no test failures
+        # so only upload screenshots if previous step has failed
+        if: failure()
+        with:
+          name: screenshots
+          path: cypress/screenshots
+      # video should always be generated
+      - uses: actions/upload-artifact@master
+        with:
+          name: videos
+          path: cypress/videos
