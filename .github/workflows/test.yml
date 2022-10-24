@@ -45,7 +45,7 @@ jobs:
         start: npm start
         wait-on: 'http://localhost:8080'
         wait-on-timeout: 60
-        install-command: yarn --frozen-lockfile --silent
+        #install-command: yarn --frozen-lockfile --silent
         spec: cypress/e2e/1-getting-started/todo.cy.js
         group: E2E on ${{ runner.os }} with Node v${{ matrix.node }}
       env:
