@@ -54,6 +54,7 @@ jobs:
         spec: cypress/e2e/2-advanced-examples/*.cy.js
   stop_job:
     name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
+    runs-on: ubuntu-latest  # Can be self-hosted runner also
     needs: cypress_job
     steps:
     - name: val bored
