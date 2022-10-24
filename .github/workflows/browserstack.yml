@@ -61,11 +61,11 @@ jobs:
       with:
         username:  ${{ secrets.BROWSERSTACK_USERNAME }}
         access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-
+    - name: local stop
       uses: browserstack/github-actions/setup-local@master
       with:
         local-testing: stop
-
+    - name: artifact section
       uses: actions/upload-artifact@master
       with:
         name: screenshots
