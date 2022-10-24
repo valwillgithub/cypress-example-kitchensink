@@ -46,24 +46,20 @@ jobs:
         wait-on: 'http://localhost:8080'
         wait-on-timeout: 60
         install-command: yarn --frozen-lockfile --silent
-        group: 'Actions example'
         group: E2E on ${{ runner.os }} with Node v${{ matrix.node }}
       env:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
-      # Save videos and screenshots as test artifacts
-      # https://github.com/actions/upload-artifact
-      - uses: actions/upload-artifact@master
-        # there might be no screenshots created when:
-        # - there are no test failures
-        # so only upload screenshots if previous step has failed
-        if: failure()
-        with:
-          name: screenshots
-          path: cypress/screenshots
-      # video should always be generated
-      - uses: actions/upload-artifact@master
-        with:
-          name: videos
-          path: cypress/videos
+      uses: actions/upload-artifact@master
+      # there might be no screenshots created when:
+      # - there are no test failures
+      # so only upload screenshots if previous step has failed
+      if: failure()
+      with:
+        name: screenshots
+        path: cypress/screenshots
+    # video should always be generated
+      uses: actions/upload-artifact@master
+      with:
+        name: videos
+        path: cypress/videos
