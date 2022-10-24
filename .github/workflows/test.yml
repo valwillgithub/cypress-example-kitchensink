@@ -50,16 +50,17 @@ jobs:
       env:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      uses: actions/upload-artifact@master
-      # there might be no screenshots created when:
-      # - there are no test failures
-      # so only upload screenshots if previous step has failed
-      if: failure()
+
+    - uses: actions/upload-artifact@master
       with:
         name: screenshots
         path: cypress/screenshots
+        # there might be no screenshots created when:
+        # - there are no test failures
+        # so only upload screenshots if previous step has failed
+        if: failure()
     # video should always be generated
-      uses: actions/upload-artifact@master
+    - uses: actions/upload-artifact@master
       with:
         name: videos
         path: cypress/videos
