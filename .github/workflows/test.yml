@@ -18,20 +18,20 @@ jobs:
         with:
           node-version: 16
       # just so we learn about available environment variables GitHub provides
-      - name: Print CI env variables
-        run: |
-          npm i -g @bahmutov/print-env@2
-          print-env GITHUB BUILD ACTIONS || true
+      # - name: Print CI env variables
+      #   run: |
+      #     npm i -g @bahmutov/print-env@2
+      #     print-env GITHUB BUILD ACTIONS || true
 
   cypress_job:
     name: Cypress job
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.17.1-chrome105-ff104-edge
     needs: install_job
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     containers: [1,2,3] 
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1,2,3] 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -41,12 +41,12 @@ jobs:
       uses: cypress-io/github-action@v4
       with:
         record: true
-        #parallel: true
+        parallel: true
         start: npm start
         wait-on: 'http://localhost:8080'
         wait-on-timeout: 60
         #install-command: yarn --frozen-lockfile --silent
-        spec: cypress/e2e/1-getting-started/todo.cy.js
+        spec: cypress/e2e/2-advanced-examples/*.cy.js
         group: E2E on ${{ runner.os }} with Node v${{ matrix.node }}
       env:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
