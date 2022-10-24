@@ -20,6 +20,8 @@ jobs:
       with:
         local-testing: start
         local-identifier: random
+        local-logging-level: all-logs
+        local-args: --parallel-runs 2
 
   install_job:
     name: Install NPM
@@ -55,6 +57,11 @@ jobs:
         #install-command: yarn --frozen-lockfile --silent
         spec: cypress/e2e/2-advanced-examples/*.cy.js
 
+    - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
+      uses: browserstack/github-actions/setup-local@master
+      with:
+        local-testing: stop
+
     - uses: actions/upload-artifact@master
       with:
         name: screenshots
@@ -66,7 +73,3 @@ jobs:
         name: videos
         path: cypress/videos
 
-    - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
-      uses: browserstack/github-actions/setup-local@master
-      with:
-        local-testing: stop

@@ -13,10 +13,10 @@
     ],
     "run_settings":{
        "cypress_config_file":"./cypress.config.js",
-       "cypress_version": "10.3.0",
-       "project_name":"Val Kitchen-Sink",
-       "build_name":"Kweku",
-       "spec_timeout": 40,
+       "cypress_version": "10.0.0",
+       "project_name":"Cypress Kitchen-Sink",
+       "build_name":"Build 100",
+       "spec_timeout": 30,
        "exclude":[         
        ],
        "parallels":"1",
