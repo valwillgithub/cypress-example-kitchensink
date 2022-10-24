@@ -52,11 +52,16 @@ jobs:
         wait-on-timeout: 60
         #install-command: yarn --frozen-lockfile --silent
         spec: cypress/e2e/2-advanced-examples/*.cy.js
-
+  stop_job:
     - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
+      needs: cypress_job
+      uses: browserstack/github-actions/setup-env@master
+      with:
+        username:  ${{ secrets.BROWSERSTACK_USERNAME }}
+        access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
       uses: browserstack/github-actions/setup-local@master
       with:
-        access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         local-testing: stop
 
     - uses: actions/upload-artifact@master
