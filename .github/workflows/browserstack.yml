@@ -65,13 +65,14 @@ jobs:
       uses: browserstack/github-actions/setup-local@master
       with:
         local-testing: stop
-    - name: artifact section
+    - name: screenshots section
       uses: actions/upload-artifact@master
       with:
         name: screenshots
         path: cypress/screenshots
         if: failure()
     # video should always be generated
+    - name: videos section
       uses: actions/upload-artifact@master
       with:
         name: videos
