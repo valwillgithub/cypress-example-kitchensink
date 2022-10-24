@@ -53,8 +53,10 @@ jobs:
         #install-command: yarn --frozen-lockfile --silent
         spec: cypress/e2e/2-advanced-examples/*.cy.js
   stop_job:
-    - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
-      needs: cypress_job
+    name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
+    needs: cypress_job
+    steps:
+    - name: val bored
       uses: browserstack/github-actions/setup-env@master
       with:
         username:  ${{ secrets.BROWSERSTACK_USERNAME }}
@@ -64,13 +66,13 @@ jobs:
       with:
         local-testing: stop
 
-    - uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@master
       with:
         name: screenshots
         path: cypress/screenshots
         if: failure()
     # video should always be generated
-    - uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@master
       with:
         name: videos
         path: cypress/videos
