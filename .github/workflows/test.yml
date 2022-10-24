@@ -47,7 +47,7 @@ jobs:
         wait-on-timeout: 60
         #install-command: yarn --frozen-lockfile --silent
         spec: cypress/e2e/2-advanced-examples/*.cy.js
-        group: E2E on ${{ runner.os }} with Node v${{ matrix.node }}
+        group: E2E on ${{ runner.os }} with Node v${{ matrix.containers }}
       env:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
