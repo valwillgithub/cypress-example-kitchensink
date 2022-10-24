@@ -28,10 +28,10 @@ jobs:
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.17.1-chrome105-ff104-edge
     needs: install_job
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1,2,3] 
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     containers: [1,2,3] 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -40,8 +40,10 @@ jobs:
     - name: Run Cypress E2E Tests
       uses: cypress-io/github-action@v4
       with:
+        spec: cypress/e2e/1-getting-started/todo.cy.js
+        continue-on-error: true
         record: true
-        parallel: true
+        #parallel: true
         start: npm start
         wait-on: 'http://localhost:8080'
         wait-on-timeout: 60
