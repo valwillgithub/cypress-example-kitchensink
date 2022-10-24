@@ -27,7 +27,7 @@ jobs:
     name: Cypress job
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.17.1-chrome105-ff104-edge
-    needs: install
+    needs: install_job
     strategy:
       fail-fast: false
       matrix:
