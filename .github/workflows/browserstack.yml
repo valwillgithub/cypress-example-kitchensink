@@ -55,6 +55,7 @@ jobs:
   stop_job:
     name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
     runs-on: ubuntu-latest  # Can be self-hosted runner also
+    if: ${{ always() }}
     needs: cypress_job
     steps:
     - name: val bored
