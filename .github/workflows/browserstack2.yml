@@ -34,11 +34,13 @@ jobs:
       run: npm run local:run
 
     - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
+      if: always()
       uses: browserstack/github-actions/setup-local@master
       with:
         local-testing: stop
 
     - name: screenshots section
+      if: always()
       uses: actions/upload-artifact@master
       with:
         name: screenshots
@@ -46,6 +48,7 @@ jobs:
         if: failure()
     # video should always be generated
     - name: videos section
+      if: always()
       uses: actions/upload-artifact@master
       with:
         name: videos
