@@ -35,7 +35,7 @@
     "cy:info": "cypress info",
     "cy:version": "cypress version",
     "cy:cache:list": "cypress cache list",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --spec cypress/e2e/2-advanced-examples/*.cy.js",
     "cy:run:record": "cypress run --record",
     "cy:open": "cypress open",
     "local:open": "start-test 8080 cy:open",
@@ -45,7 +45,7 @@
     "semantic-release": "semantic-release",
     "run:browserstack": "browserstack-cypress run --sync --spec cypress/e2e/2-advanced-examples/*.cy.js",
     "single": "cypress run --spec cypress/e2e/2-advanced-examples/actions.cy.js --headed",
-    "run:specs": "cypress run--spec cypress/e2e/2-advanced-examples/*.cy.js"
+    "run:specs": "cypress run --spec cypress/e2e/2-advanced-examples/*.cy.js"
 
 
   },

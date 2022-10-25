@@ -28,11 +28,10 @@ jobs:
     - name: 'Building web application to be tested'
       run: npm install
 
-    - name: 'Running application under test'
-      run: npm run dev
-
+    # - name: 'Running application under test'
+    #   run: npm run dev
     - name: 'Running test on BrowserStack'  
-      run: npm run run:specs
+      run: npm run local:run
 
     - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
       uses: browserstack/github-actions/setup-local@master
