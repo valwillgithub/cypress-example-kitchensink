@@ -39,7 +39,7 @@ jobs:
       with:
         local-testing: stop
 
-     - name: screenshots section
+    - name: screenshots section
       uses: actions/upload-artifact@master
       with:
         name: screenshots
