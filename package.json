@@ -43,8 +43,10 @@
     "local:run:record": "start-test 8080 cy:run:record",
     "ci:set-port": "node ./scripts/set-port",
     "semantic-release": "semantic-release",
-    "run:browserstack": "browserstack-cypress run --sync --spec cypress/e2e/2-advanced-examples/traversal.cy.js",
-    "single": "cypress run --spec cypress/e2e/2-advanced-examples/actions.cy.js --headed"
+    "run:browserstack": "browserstack-cypress run --sync --spec cypress/e2e/2-advanced-examples/*.cy.js",
+    "single": "cypress run --spec cypress/e2e/2-advanced-examples/actions.cy.js --headed",
+    "run:specs": "cypress run--spec cypress/e2e/2-advanced-examples/*.cy.js"
+
 
   },
   "repository": {

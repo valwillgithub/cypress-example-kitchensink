@@ -8,7 +8,12 @@
           "browser":"chrome",
           "os":"Windows 10",
           "versions":["latest"]
-       }
+       },
+       {
+         "browser":"edge",
+         "os":"Windows 10",
+         "versions":["latest"]
+      }
 
     ],
     "run_settings":{
@@ -19,7 +24,7 @@
        "spec_timeout": 30,
        "exclude":[         
        ],
-       "parallels":"1",
+       "parallels":"2",
        "npm_dependencies":{
           
        },
