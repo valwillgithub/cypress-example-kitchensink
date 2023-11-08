@@ -35,7 +35,7 @@ CI Provider |  Workflow | Build Status |
 [Cy GitHub Actions docs]:   https://github.com/cypress-io/github-action#readme
 [Cy GitHub Actions badge]:  https://github.com/cypress-io/cypress-example-kitchensink/actions/workflows/using-action.yml/badge.svg
 [Cy GitHub Actions log]:    https://github.com/cypress-io/cypress-example-kitchensink/actions/workflows/using-action.yml?query=branch%3Amaster
-[Cy GitHub Actions workflow]:  https://github.com/cypress-io/cypress-example-kitchensink/actions/workflows/using-action.yml
+[Cy GitHub Actions workflow]:  .github/workflows/using-action.yml
 
 [GitHub Actions docs]:      https://docs.github.com/en/actions
 [GitHub Actions badge]:     https://github.com/cypress-io/cypress-example-kitchensink/actions/workflows/parallel.yml/badge.svg
@@ -64,7 +64,6 @@ CI Provider |  Basic Config | Full Parallel Config
 [CloudBees CodeShip Pro][CloudBees CodeShip Pro docs] | [basic/codeship-pro](basic/codeship-pro)
 [GitHub Actions][GitHub Actions docs] |  [single.yml](.github/workflows/single.yml)
 [GitLab][GitLab docs] | [basic/.gitlab-ci.yml](basic/.gitlab-ci.yml) | [.gitlab-ci.yml](.gitlab-ci.yml)
-[Heroku CI][Heroku CI docs] | [basic/app.json](basic/app.json) |
 [Jenkins][Jenkins docs] | [basic/Jenkinsfile](basic/Jenkinsfile) | [Jenkinsfile](Jenkinsfile)
 [Semaphore 2.0][Semaphore 2.0 docs] | [basic/.semaphore.yml](basic/.semaphore.yml) | [.semaphore/semaphore.yml](.semaphore/semaphore.yml)
 [Travis CI][Travis CI docs] | [basic/.travis.yml](basic/.travis.yml) | [.travis.yml](.travis.yml)
@@ -77,24 +76,11 @@ CI Provider |  Basic Config | Full Parallel Config
 [Buildkite docs]:               https://buildkite.com/docs
 [CloudBees CodeShip Pro docs]:  https://docs.cloudbees.com/docs/cloudbees-codeship/
 [GitLab docs]:                  https://docs.gitlab.com/ee/ci/yaml/
-[Heroku CI docs]:               https://devcenter.heroku.com/categories/continuous-integration
 [Jenkins docs]:                 https://www.jenkins.io/doc/
 [Semaphore 2.0 docs]:           https://docs.semaphoreci.com/
 [Travis CI docs]:               https://docs.travis-ci.com/
 
 The Cypress documentation page [CI Provider Examples](https://docs.cypress.io/guides/continuous-integration/ci-provider-examples) provides some more examples with extensive guides for using Cypress with some of the most popular CI providers.
-
-## CI Workshop with Cypress
-
-The Cypress team has created a full workshop showing how to run Cypress on popular CI providers. Find the workshop at [github.com/cypress-io/cypress-workshop-ci](https://github.com/cypress-io/cypress-workshop-ci).
-
-## CI Community Examples
-
-CI | Link
-:--- | :--- |
-IBM Cloud CI (legacy) | [Cloud Foundry](https://github.com/iamgollum/cypress-example-kitchensink/tree/281-ibm-cloud-pipeline)
-GitLab CI (legacy) | [Example caching when installing using Yarn](https://gitlab.com/bahmutov/cypress-yarn-gitlab-ci-example)
-CodeFresh (legacy) | [bahmutov/cypress-codefresh-example](https://github.com/bahmutov/cypress-codefresh-example)
 
 ## Help + Testing
 

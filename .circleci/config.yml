@@ -8,28 +8,25 @@
 version: 2.1
 orbs:
   # use Cypress orb from CircleCI registry
-  cypress: cypress-io/cypress@3.1.2
+  cypress: cypress-io/cypress@3.1.4
+  win: circleci/windows@5.0.0
 
 executors:
   mac:
     macos:
-      # Executor should have Node >= required version
-      xcode: "14.0.0"
-  win:
-    # copied the parameters from
-    # https://circleci.com/developer/orbs/orb/circleci/windows
-    machine:
-      image: "windows-server-2019-vs2019:stable"
-      resource_class: "windows.medium"
-      shell: "bash.exe"
+      xcode: "14.3.1"
+    resource_class: macos.x86.medium.gen2
   browsers:
     docker:
-      - image: 'cypress/browsers:node-18.15.0-chrome-111.0.5563.146-1-ff-111.0.1-edge-111.0.1661.62-1'
+      - image: 'cypress/browsers:node-20.9.0-chrome-118.0.5993.88-1-ff-118.0.2-edge-118.0.2088.46-1'
 
 jobs:
   win-test:
     working_directory: ~/app
-    executor: win
+    executor:
+      name: win/default
+      size: medium
+      shell: bash.exe
     steps:
       - checkout
 
@@ -61,12 +58,13 @@ jobs:
           no_output_timeout: '1m'
       - store_artifacts:
           path: cypress\screenshots
-      - store_artifacts:
-          path: cypress\videos
 
   win-test-chrome:
     working_directory: ~/app
-    executor: win
+    executor:
+      name: win/default
+      size: medium
+      shell: bash.exe
     steps:
       - checkout
 
@@ -75,7 +73,7 @@ jobs:
 
       # install Chrome browser on Windows machine using Chocolatey
       # https://chocolatey.org/packages/GoogleChrome
-      - run: choco install googlechrome
+      - run: choco install googlechrome --ignore-checksums -y
       - run: npm ci
       - run: npm run cy:verify
       - run: npm run cy:info
@@ -101,12 +99,13 @@ jobs:
           no_output_timeout: '1m'
       - store_artifacts:
           path: cypress\screenshots
-      - store_artifacts:
-          path: cypress\videos
 
   win-test-firefox:
     working_directory: ~/app
-    executor: win
+    executor:
+      name: win/default
+      size: medium
+      shell: bash.exe
     steps:
       - checkout
 
@@ -115,7 +114,7 @@ jobs:
 
       # install Firefox browser on Windows machine using Chocolatey
       # https://chocolatey.org/packages/Firefox
-      - run: choco install firefox
+      - run: choco install firefox -y
       - run: npm ci
       - run: npm run cy:verify
       - run: npm run cy:info
@@ -141,8 +140,6 @@ jobs:
           no_output_timeout: '1m'
       - store_artifacts:
           path: cypress\screenshots
-      - store_artifacts:
-          path: cypress\videos
 
   mac-test:
     executor: mac
@@ -179,7 +176,7 @@ workflows:
     jobs:
       # checks out code and installs dependencies once
       # runs on 3 machines, load balances tests
-      # and records on Cypress Dashboard
+      # and records on Cypress Cloud
       - cypress/run:
           name: '3 machines'
           post-install: 'npm run build'

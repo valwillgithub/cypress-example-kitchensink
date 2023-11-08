@@ -13,12 +13,12 @@ cache:
     - cache/Cypress
 
 test:
-  image: cypress/base:18.14.1
+  image: cypress/base:20.9.0
   stage: test
   script:
     - npm ci
     # print CI environment variables for reference
-    - $(npm bin)/print-env CI
+    - npx print-env CI
     # make sure Cypress can run
     - npm run cy:verify
     # start the server in the background
@@ -27,6 +27,5 @@ test:
     - npm run e2e:record
   artifacts:
     paths:
-      - cypress/videos
       - cypress/screenshots
     expire_in: 1 day
